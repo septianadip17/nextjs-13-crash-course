@@ -21,17 +21,21 @@ const products = [
   },
 ];
 
-export default function ProductList() {
+export default function ProductList({ getAllProducts }) {
   const router = useRouter();
-  console.log(router);
+  console.log(getAllProducts, "getAllProducts");
 
   return (
     <ul>
-      {products.map((productItem) => (
-        <Link href={`/products/${productItem.id}`}>
-          <li key={productItem.id}>{productItem.name}</li>
-        </Link>
-      ))}
+      {getAllProducts && getAllProducts.length ? (
+        getAllProducts.map((productItem) => (
+          <Link href={`/products/${productItem.id}`}>
+            <li  key={productItem.id}>{productItem.title}</li>
+          </Link>
+        ))
+      ) : (
+        <h1>No products</h1>
+      )}
     </ul>
   );
 }
