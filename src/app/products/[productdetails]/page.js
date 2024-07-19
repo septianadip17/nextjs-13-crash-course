@@ -1,6 +1,7 @@
 async function fetchProductDetails(id) {
   const response = await fetch(`https://dummyjson.com/products/${id}`, {
     method: "GET",
+    cache: "no-store",
   });
 
   const result = await response.json();
